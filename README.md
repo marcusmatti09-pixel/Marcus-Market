@@ -6,9 +6,7 @@ It's a static site: `index.html` plus photos in `images/`. There's no build step
 
 ## Going live
 
-Every push to `main` deploys the site to GitHub Pages through `.github/workflows/pages.yml`.
-
-One-time setup: in **Settings → Pages**, set **Source** to **GitHub Actions**.
+GitHub Pages publishes the site straight from the `main` branch (**Settings → Pages → Deploy from a branch → main, / (root)**). Anything pushed to `main` goes live within a minute or two.
 
 ## Adding the online shop link
 
