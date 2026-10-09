@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marcus Market | Midtown Detroit's Modern Grocer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Barlow:wght@300;700&family=Comfortaa:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --charcoal:#404040;
+    --ink:#2E2E2E;
+    --lime:#8FB832;
+    --lime-dark:#5F7F1C;
+    --soft:#F4F5F0;
+    --line:#E4E4DE;
+    --taco:#C4491E;
+    --pink:#D70D88;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box;}
+  html{background:#FFFFFF;scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px));}
+  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Albert Sans','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .cond{font-family:'Albert Sans','Helvetica Neue',Helvetica,Arial,sans-serif;text-transform:uppercase;letter-spacing:0.02em;}
+  .chic{font-family:'Comfortaa','Albert Sans',sans-serif !important;text-transform:none !important;font-weight:300 !important;letter-spacing:-0.01em !important;}
+
+
+  /* HEADER */
+  header.site{position:sticky;top:0;z-index:10;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px);}
+  .bar{max-width:1240px;margin:0 auto;padding:12px 24px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;}
+  .bar .brand{justify-self:start;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand .logo-svg{height:48px;width:48px;display:block;flex:none;}
+  .brand .name{font-size:1.25rem;font-weight:600;line-height:1.05;}
+  .brand .name span{display:block;font-weight:500;letter-spacing:0.3em;font-size:0.8rem;color:var(--lime-dark);}
+  nav.main{display:flex;gap:34px;font-size:0.9rem;font-weight:500;}
+  nav.main a:first-child{color:var(--lime-dark);font-weight:600;}
+  nav.main a:hover{color:var(--lime-dark);}
+  .shop-btn{background:var(--lime);color:#1F1F1F;padding:12px 24px;font-size:0.9rem;font-weight:600;white-space:nowrap;}
+  .shop-btn:hover{background:#9FC83F;}
+  .menu-btn{display:none;justify-self:end;grid-row:1;grid-column:2;background:none;border:none;padding:10px;margin:-10px -6px -10px 0;cursor:pointer;}
+  .menu-btn span{display:block;width:24px;height:2px;background:var(--charcoal);margin:5px 0;transition:transform .25s ease,opacity .2s ease;}
+  .menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media (max-width:860px){
+    .bar{grid-template-columns:1fr auto;gap:0;}
+    .menu-btn{display:block;}
+    nav.main{display:none;grid-column:1 / -1;flex-direction:column;gap:0;padding:8px 0 6px;font-size:1rem;}
+    nav.main.open{display:flex;}
+    nav.main a{padding:14px 0;border-top:1px solid var(--line);}
+    .brand .name{font-size:1.15rem;}
+  }
+
+  /* HERO */
+  .hero{background:#FFFFFF;max-width:1240px;margin:0 auto;padding:28px 24px 10px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;}
+  .hero .photo{width:100%;aspect-ratio:1129/1393;max-height:calc(100vh - 120px);overflow:hidden;}
+  .hero .photo img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;}
+  .hero .inner{display:flex;flex-direction:column;gap:18px;color:var(--ink);}
+  .hero .tagline{font-size:0.95rem;font-weight:500;letter-spacing:0.08em;color:var(--charcoal);}
+  .hero h1{margin:0;line-height:1;}
+  .hero h1.logo-type{font-family:'Barlow','DIN Alternate','Helvetica Neue',Arial,sans-serif;text-transform:uppercase;color:var(--lime);line-height:0.95;display:inline-flex;flex-direction:column;}
+  .logo-type .l1{font-weight:700;font-size:clamp(3rem,6vw,5.2rem);letter-spacing:0.14em;}
+  .logo-type .l2{font-weight:300;font-size:clamp(3rem,6vw,5.2rem);letter-spacing:0.14em;}
+  .hero p{max-width:42ch;font-size:1.1rem;margin:4px 0 6px;color:#4a4a4a;}
+  .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;}
+  .ghost{border:1.5px solid var(--charcoal);color:var(--charcoal);padding:10.5px 24px;font-size:0.9rem;font-weight:600;}
+  .ghost:hover{background:var(--charcoal);color:#fff;}
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;padding:0;gap:0;position:relative;}
+    .hero .photo{max-height:none;}
+    .hero .inner{position:absolute;left:0;right:0;bottom:0;padding:90px 22px 24px;gap:10px;
+      background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.55) 40%,rgba(0,0,0,0.82) 100%);}
+    .hero .tagline{color:#fff;font-size:0.8rem;}
+    .logo-type .l1,.logo-type .l2{font-size:clamp(2.3rem,11vw,3.4rem);}
+    .hero .ctas{margin-top:8px;}
+    .hero .ctas a{flex:1;text-align:center;padding-left:12px;padding-right:12px;}
+    .hero .ghost{border-color:#fff;color:#fff;}
+  }
+
+  /* SECTION HEADS */
+  .head{max-width:1240px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;}
+  .head h2{font-size:clamp(2.2rem,4.6vw,3.4rem);margin:0;line-height:1.05;}
+  .head a{font-size:0.9rem;font-weight:600;color:var(--lime-dark);border-bottom:1.5px solid var(--lime);}
+
+  /* AISLES */
+  section.aisles{padding:80px 0 30px;}
+  .tiles{max-width:1240px;margin:28px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media (max-width:900px){ .tiles{grid-template-columns:repeat(2,1fr);} }
+  .tile{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--soft);display:block;}
+  .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .tile:hover img{transform:scale(1.04);}
+  .tile .label{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0.6));color:#fff;display:flex;justify-content:space-between;align-items:flex-end;}
+  .tile .label b{font-size:clamp(0.95rem,1.6vw,1.15rem);font-weight:600;line-height:1.1;}
+  .tile .label i{font-style:normal;font-size:1.3rem;}
+  .tile.empty{display:flex;align-items:center;justify-content:center;}
+  .tile.empty .label{background:none;color:var(--charcoal);}
+  .tile.empty .soon{font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:#777;}
+
+  /* KITCHENS */
+  section.kitchens{padding:70px 0;}
+  .kgrid{max-width:1240px;margin:28px auto 0;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:760px){ .kgrid{grid-template-columns:1fr;} }
+  .kcard{display:flex;flex-direction:column;color:#fff;}
+  .kphoto{aspect-ratio:4/3;overflow:hidden;background:var(--soft);display:flex;align-items:center;justify-content:center;}
+  .kphoto img{width:100%;height:100%;object-fit:cover;display:block;}
+  .kphoto .soon{font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:#777;}
+  .kbody{padding:34px 30px 38px;flex:1;}
+  .kcard.taco .kbody{background:var(--taco);}
+  .kcard.juice .kbody{background:var(--pink);}
+  .kcard .kicker{font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.85;}
+  .kcard h3{font-size:clamp(2.2rem,4vw,3.2rem);margin:8px 0 12px;line-height:1.02;}
+  .kcard p{max-width:34ch;margin:0;font-size:1.05rem;opacity:0.92;}
+
+  /* STATEMENT */
+  .statement{background:var(--charcoal);color:#fff;padding:90px 24px;}
+  .statement p{max-width:980px;margin:0 auto;text-align:center;font-size:clamp(1.15rem,2.1vw,1.6rem);line-height:1.45;font-weight:500;}
+  .statement p em{font-style:normal;color:var(--lime);}
+
+  /* MERCH */
+  section.merch{padding:80px 0 30px;}
+  .mrow{max-width:1240px;margin:28px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media (max-width:760px){ .mrow{grid-template-columns:1fr;} }
+  .mitem .ph img{width:100%;height:100%;object-fit:cover;display:block;}
+  .mitem .ph{overflow:hidden;aspect-ratio:4/5;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:#777;}
+  .mitem h3{font-size:0.95rem;margin:14px 0 0;font-weight:600;}
+
+  /* LOCATIONS */
+  section.visit{padding:80px 0;}
+  .locs{max-width:1240px;margin:28px auto 0;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:760px){ .locs{grid-template-columns:1fr;} }
+  .loc{border:1px solid var(--line);padding:32px 28px;display:flex;flex-direction:column;}
+  .loc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;}
+  .loc h3{font-size:1.25rem;font-weight:600;margin:0;}
+  .badge{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;padding:5px 10px;white-space:nowrap;}
+  .badge.open{background:#EEF4DE;color:var(--lime-dark);}
+  .badge.soon{background:var(--charcoal);color:#fff;}
+  .area{margin:4px 0 22px;color:#6b6b6b;font-size:1rem;}
+  .loc-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1;}
+  @media (max-width:420px){ .loc-cols{grid-template-columns:1fr;} }
+  .loc p{margin:0 0 4px;font-size:1.02rem;}
+  .hours{display:grid;grid-template-columns:auto auto;gap:4px 16px;font-size:1.02rem;align-content:start;}
+  .ulink{border-bottom:1.5px solid var(--lime);font-weight:600;}
+  .loc-btn{align-self:flex-start;margin-top:28px;}
+  .soon-loc{background:var(--soft);border-color:var(--soft);}
+  .soon-copy{max-width:36ch;}
+  .soon-note{margin-top:auto !important;padding-top:28px;font-size:0.9rem !important;color:#6b6b6b;}
+
+  footer{background:var(--charcoal);color:#fff;padding:34px 24px;}
+  footer .inner{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:0.9rem;}
+  footer .inner span:first-child b{color:var(--lime);}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="#top" aria-label="Marcus Market home">
+      <svg class="logo-svg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><rect width="600" height="600" fill="#404040"/><polygon fill="#8FB832" points="141,89 227,89 306.5,247 386,89 471,89 471,444 386,444 386,277 334,362 279,362 228,277 228,444 141,444"/><text x="141" y="496" textLength="330" lengthAdjust="spacing" font-family="Barlow, 'DIN Alternate', Arial, sans-serif" font-weight="700" font-size="56" fill="#8FB832">MARCUS</text><text x="143" y="546" textLength="328" lengthAdjust="spacing" font-family="Barlow, 'DIN Alternate', Arial, sans-serif" font-weight="300" font-size="57" fill="#8FB832">MARKET</text></svg>
+      <span class="name cond">Marcus<span>Market</span></span>
+    </a>
+    <nav class="main cond" id="mainNav" aria-label="Main">
+      <a data-shop href="#">Shop</a>
+      <a href="#tacos">El Taco Veloz</a>
+      <a href="#juice">Juice Joint</a>
+      <a href="#merch">Merch</a>
+      <a href="#about">About Us</a>
+    </nav>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="photo"><img src="images/storefront.jpg" alt="Marcus Market at night with its vertical MARCUS sign and pink I LOVE YOU neon"></div>
+  <div class="inner">
+    <div class="tagline cond">A Neighborhood Grocer</div>
+    <h1 class="logo-type"><span class="l1">Marcus</span><span class="l2">Market</span></h1>
+    <div class="ctas">
+      <a class="shop-btn cond" data-shop href="#">Shop Now</a>
+      <a class="ghost cond" href="#visit">Our Locations</a>
+    </div>
+  </div>
+</section>
+
+<section class="aisles" id="aisles">
+  <div class="head">
+    <h2 class="chic">shop the aisles</h2>
+    <a class="cond" data-shop href="#">Shop everything →</a>
+  </div>
+  <div class="tiles">
+    <a class="tile" data-shop href="#"><img src="images/produce-meat.jpg" alt="Fresh-cut fruit and berries"><span class="label cond"><b>Produce &amp; Meat</b><i>→</i></span></a>
+    <a class="tile" data-shop href="#"><img src="images/bakery.jpg" alt="Cookies, brownies, and donut holes"><span class="label cond"><b>Bakery</b><i>→</i></span></a>
+    <a class="tile" data-shop href="#"><img src="images/coffee.jpg" alt="Coffee shelf"><span class="label cond"><b>Coffee</b><i>→</i></span></a>
+    <a class="tile" data-shop href="#"><img src="images/flowers.jpg" alt="Fresh floral bouquets" style="object-fit:cover;object-position:center 62%;"><span class="label cond"><b>Flowers</b><i>→</i></span></a>
+    <a class="tile empty" data-shop href="#"><span class="soon">Photo coming soon</span><span class="label cond"><b>Prepared Foods</b><i>→</i></span></a>
+    <a class="tile empty" data-shop href="#"><span class="soon">Photo coming soon</span><span class="label cond"><b>Beer, Wine &amp; Spirits</b><i>→</i></span></a>
+  </div>
+</section>
+
+<section class="kitchens" id="kitchens">
+  <div class="head">
+    <h2 class="chic">under our roof</h2>
+  </div>
+  <div class="kgrid">
+    <div class="kcard taco" id="tacos">
+      <div class="kphoto"><img src="images/el-taco-veloz.jpg" alt="El Taco Veloz tacos with onion, cilantro, lime, and sliced radish"></div>
+      <div class="kbody">
+        <div class="kicker">Inside Marcus Market</div>
+        <h3 class="chic">el taco<br>veloz</h3>
+        <p>Handmade tacos, made to order and ready fast.</p>
+      </div>
+    </div>
+    <div class="kcard juice" id="juice">
+      <div class="kphoto"><img src="images/juice-joint.jpg" alt="Juice Joint Detroit cold-pressed juices: Sunrise, Pure Watermelon, The Cure, The Zeppelin, and The Marley"></div>
+      <div class="kbody">
+        <div class="kicker">Inside Marcus Market</div>
+        <h3 class="chic">juice joint<br>detroit</h3>
+        <p>Fresh juices and smoothies, made in small batches.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="statement" id="about">
+  <p class="cond">Marcus Market is a modern grocer in Midtown Detroit offering fresh produce &amp; meat, prepared foods, pastries, specialty bottled coffee, floral arrangements, and craft beer, wine &amp; spirits — plus handmade tacos from <em>El Taco Veloz</em> and fresh juice from <em>Juice Joint Detroit</em>.</p>
+</section>
+
+<section class="merch" id="merch">
+  <div class="head">
+    <h2 class="chic">merch</h2>
+  </div>
+  <div class="mrow">
+    <div class="mitem"><div class="ph">Photo coming soon</div><h3 class="cond">Hoodie</h3></div>
+    <div class="mitem"><div class="ph"><img src="images/tote-bag.jpg" alt="Black Marcus Market tote bag with white logo lettering"></div><h3 class="cond">Tote Bag</h3></div>
+    <div class="mitem"><div class="ph"><img src="images/skateboards.jpg" alt="Marcus Market skateboard decks in red and orange with a neon print of the store"></div><h3 class="cond">Skateboard</h3></div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="head">
+    <h2 class="chic">our locations</h2>
+  </div>
+  <div class="locs">
+    <div class="loc">
+      <div class="loc-top">
+        <h3 class="cond">Marcus Market</h3>
+        <span class="badge open cond">Delivery &amp; Pickup</span>
+      </div>
+      <p class="area">Midtown Detroit</p>
+      <div class="loc-cols">
+        <div>
+          <p>4614 2nd Ave</p>
+          <p>Detroit, MI 48201</p>
+          <p style="margin-top:10px;"><a class="ulink" href="tel:+13138331191">(313) 833-1191</a></p>
+          <p style="margin-top:6px;"><a class="ulink" href="https://maps.google.com/?q=4614+2nd+Ave+Detroit+MI+48201" target="_blank" rel="noopener">Get directions</a></p>
+        </div>
+        <div class="hours">
+          <span>Mon – Wed</span><span>8am – 11pm</span>
+          <span>Thu – Sat</span><span>8am – 12am</span>
+          <span>Sunday</span><span>9am – 11pm</span>
+        </div>
+      </div>
+      <a class="shop-btn cond loc-btn" data-shop href="#">Order Delivery &amp; Pickup</a>
+    </div>
+    <div class="loc soon-loc">
+      <div class="loc-top">
+        <h3 class="cond">Marcus Market South</h3>
+        <span class="badge soon cond">Coming soon</span>
+      </div>
+      <p class="area">Opening soon</p>
+      <p class="soon-copy">Our second location is on the way. Address, hours, and opening date coming soon.</p>
+      <p class="soon-note">Delivery and pickup are available from our Midtown store for now.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner cond">
+    <span><b>Marcus Market</b> · Midtown Detroit</span>
+    <span>© 2026 Marcus Market</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var btn=document.querySelector('.menu-btn'), nav=document.getElementById('mainNav');
+    btn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+      btn.setAttribute('aria-label',open?'Close menu':'Open menu');
+    });
+    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){
+      nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Open menu');
+    });});
+  })();
+  // Paste the online shop link here once it's live (e.g. "https://shop.marcusmarket.com").
+  var SHOP_URL = "";
+  function toast(msg){
+    var t=document.getElementById('toast');
+    if(!t){t=document.createElement('div');t.id='toast';t.setAttribute('role','status');
+      t.style.cssText='position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#404040;color:#fff;padding:14px 20px;font:500 0.95rem Albert Sans,Arial,sans-serif;z-index:50;max-width:90vw;text-align:center;border-left:4px solid #8FB832;';
+      document.body.appendChild(t);}
+    t.textContent=msg;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(function(){t.style.display='none';},3500);
+  }
+  document.querySelectorAll('[data-shop]').forEach(function(a){
+    if(SHOP_URL){ a.href = SHOP_URL; }
+    else {
+      a.addEventListener('click', function(e){ e.preventDefault(); toast('Online shop coming soon — visit us at 4614 2nd Ave or call (313) 833-1191.'); });
+    }
+  });
+</script>
+</body>
+</html>
