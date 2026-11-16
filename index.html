@@ -156,6 +156,14 @@
   .soon-copy{max-width:36ch;}
   .soon-note{margin-top:auto !important;padding-top:28px;font-size:0.9rem !important;color:#6b6b6b;}
 
+  /* JOIN OUR TEAM */
+  section.team{padding:0 0 80px;}
+  .team-box{max-width:1240px;margin:0 auto;padding:0 24px;}
+  .team-inner{background:var(--soft);padding:48px 40px;display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;}
+  .team-inner h2{font-size:clamp(2.2rem,4.6vw,3.4rem);margin:0 0 10px;line-height:1.05;}
+  .team-inner p{margin:0;max-width:52ch;font-size:1.05rem;color:#4a4a4a;}
+  @media (max-width:760px){ .team-inner{padding:36px 24px;} .team-inner .shop-btn{width:100%;text-align:center;} }
+
   footer{background:var(--charcoal);color:#fff;padding:34px 24px;}
   footer .inner{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:0.9rem;}
   footer .inner span:first-child b{color:var(--lime);}
@@ -175,6 +183,7 @@
       <a href="#juice">Juice Joint</a>
       <a href="#merch">Merch</a>
       <a href="#about">About Us</a>
+      <a href="#team">Join Our Team</a>
     </nav>
     <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
   </div>
@@ -284,6 +293,18 @@
   </div>
 </section>
 
+<section class="team" id="team">
+  <div class="team-box">
+    <div class="team-inner">
+      <div>
+        <h2 class="chic">join our team</h2>
+        <p>We're always looking for friendly, hardworking people to join us at Marcus Market, El Taco Veloz, and Juice Joint Detroit.</p>
+      </div>
+      <a class="shop-btn cond" data-apply href="#">Apply Now</a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="inner cond">
     <span><b>Marcus Market</b> · Midtown Detroit</span>
@@ -305,6 +326,8 @@
   })();
   // Paste the online shop link here once it's live (e.g. "https://shop.marcusmarket.com").
   var SHOP_URL = "";
+  // Paste the job application link here (a Google Form, Indeed page, or "mailto:jobs@marcusmarket.com").
+  var APPLY_URL = "";
   function toast(msg){
     var t=document.getElementById('toast');
     if(!t){t=document.createElement('div');t.id='toast';t.setAttribute('role','status');
@@ -312,6 +335,12 @@
       document.body.appendChild(t);}
     t.textContent=msg;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(function(){t.style.display='none';},3500);
   }
+  document.querySelectorAll('[data-apply]').forEach(function(a){
+    if(APPLY_URL){ a.href = APPLY_URL; if(/^https?:/.test(APPLY_URL)){ a.target = '_blank'; a.rel = 'noopener'; } }
+    else {
+      a.addEventListener('click', function(e){ e.preventDefault(); toast('Online applications coming soon. Stop by 4614 2nd Ave or call (313) 833-1191 to apply.'); });
+    }
+  });
   document.querySelectorAll('[data-shop]').forEach(function(a){
     if(SHOP_URL){ a.href = SHOP_URL; }
     else {

@@ -13,3 +13,7 @@ The site is served at **marcusmarket.com** (set by the `CNAME` file). The domain
 ## Adding the online shop link
 
 When the online shop is ready, put its URL in `SHOP_URL` near the bottom of `index.html`. Until then, the Shop buttons show a "coming soon" message.
+
+## Adding the job application link
+
+Put the application link (a Google Form, an Indeed page, or a `mailto:` address) in `APPLY_URL` near the bottom of `index.html`. Until then, the Apply Now button tells people to stop by or call the store.
