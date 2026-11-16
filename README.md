@@ -14,6 +14,6 @@ The site is served at **marcusmarket.com** (set by the `CNAME` file). The domain
 
 When the online shop is ready, put its URL in `SHOP_URL` near the bottom of `index.html`. Until then, the Shop buttons show a "coming soon" message.
 
-## Adding the job application link
+## Job applications
 
-Put the application link (a Google Form, an Indeed page, or a `mailto:` address) in `APPLY_URL` near the bottom of `index.html`. Until then, the Apply Now button tells people to stop by or call the store.
+`apply.html` is the application form. Submissions go through Web3Forms (web3forms.com), which emails each one to the hiring inbox without the address appearing on the site. Put the Web3Forms access key in `ACCESS_KEY` in `apply.html`, and set `APPLY_URL` in `index.html` to `/apply.html` so the Apply Now button opens the form.
