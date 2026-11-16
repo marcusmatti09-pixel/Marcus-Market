@@ -16,4 +16,4 @@ When the online shop is ready, put its URL in `SHOP_URL` near the bottom of `ind
 
 ## Job applications
 
-The Apply Now button opens a pre-filled email to the hiring inbox set in `APPLY_TO` near the bottom of `index.html`. The address is stored in two pieces so spam bots scanning the page don't pick it up.
+Apply Now opens `apply.html`, a short application form. Submissions are emailed to the hiring inbox in `SEND_TO` (in `apply.html`) through FormSubmit (formsubmit.co). The address is stored in two pieces so spam bots scanning the page don't pick it up. The first submission to a new address sends an activation email that has to be confirmed once.

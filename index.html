@@ -326,9 +326,8 @@
   })();
   // Paste the online shop link here once it's live (e.g. "https://shop.marcusmarket.com").
   var SHOP_URL = "";
-  // Job applications go to this inbox. The address is split up so spam bots scanning the page don't find it.
-  var APPLY_TO = ["adrianmatti", "gmail.com"];
-  var APPLY_URL = "mailto:" + APPLY_TO.join("@") + "?subject=" + encodeURIComponent("Job Application - Marcus Market") + "&body=" + encodeURIComponent("Name:\nPhone:\nPosition I'm interested in:\nAvailability (days/hours):\nExperience:\n\n(Please attach your resume if you have one.)");
+  // The job application form.
+  var APPLY_URL = "/apply.html";
   function toast(msg){
     var t=document.getElementById('toast');
     if(!t){t=document.createElement('div');t.id='toast';t.setAttribute('role','status');
