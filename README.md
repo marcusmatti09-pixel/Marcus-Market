@@ -16,4 +16,4 @@ When the online shop is ready, put its URL in `SHOP_URL` near the bottom of `ind
 
 ## Job applications
 
-`apply.html` is the application form. Submissions go through Web3Forms (web3forms.com), which emails each one to the hiring inbox without the address appearing on the site. Put the Web3Forms access key in `ACCESS_KEY` in `apply.html`, and set `APPLY_URL` in `index.html` to `/apply.html` so the Apply Now button opens the form.
+The Apply Now button opens a pre-filled email to the hiring inbox set in `APPLY_TO` near the bottom of `index.html`. The address is stored in two pieces so spam bots scanning the page don't pick it up.
